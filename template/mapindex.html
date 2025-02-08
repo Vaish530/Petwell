@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Maps with Directions</title>
+    <style>
+      /* Full-screen map container */
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+      }
+      #map {
+        height: 100vh;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <!-- Load the Google Maps JavaScript API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCi4FzXYJMymi0nM3khKAHMtp2cw1F50Cg&libraries=places"></script>
+    <script>
+      function initMap() {
+        // Create a map centered on a default location
+        const map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: 17.3616, lng: 78.4747 }, // New York City
+          zoom: 16,
+        });
+
+        // Directions service and renderer to display route on map
+        const directionsService = new google.maps.DirectionsService();
+        const directionsRenderer = new google.maps.DirectionsRenderer();
+        directionsRenderer.setMap(map);
+
+        const origin = { lat: 17.3616, lng: 78.4747 }; //hyderabad
+        const destination = { lat: 17.3019, lng: 78.4011 }; // rangareddy
+        const marker=new google.maps.Marker({
+            position:{ lat: 17.3616, lng: 78.4747 },
+            map:map,
+            lableL:"P",
+            title:"HYDERABAD",
+            Animation:google.maps.Animation.DROP,
+
+        });
+        const infoWindow=new google.maps.infoWindow(
+            {
+                content:"<p>hyderabad</p>"
+            }
+        );
+        infoWindow.open(map,marker);
+
+        // Request route directions
+        directionsService.route(
+          {
+            origin: origin,
+            destination: destination,
+            travelMode: google.maps.TravelMode.DRIVING, // Change to WALKING, BICYCLING, TRANSIT as needed
+          },
+          (response, status) => {
+            if (status === "OK") {
+              directionsRenderer.setDirections(response);
+            } else {
+              console.error("Directions request failed due to " + status);
+            }
+          }
+        );
+      }
+
+      // Initialize the map after the page loads
+      window.onload = initMap;
+    </script>
+  </body>
+</html>

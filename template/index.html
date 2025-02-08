@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+ 
+  <title >Pet management assistance</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+<body>
+ 
+  <div class="nav-bar">
+    <nav>
+      
+        <a class="a-navabar"href="{% url 'index' %}">Home</a>
+          <a class="a-navabar"href="{% url 'services' %}">Services</a>
+          <a class="a-navabar"href="{% url 'bowlsparadise' %}">PetBowls&petparadize</a>
+          <a class="a-navabar"href="{% url 'training' %}">Training Academy</a>
+          <a class="a-navabar"href="{% url 'healthline' %}">HealthLine</a>
+          <a class="a-navabar"href="{% url 'login' %}">login</a>
+          <a class="a-navabar"href="{% url 'chatbot' %}">Bot Assistant</a>
+</nav>  
+  </div> 
+ 
+  <div class="container">
+   
+    <div class="left-block">
+      <h1 class="title">PET WELL</h1>
+      <h3 class="s-title">A pet management assistance</h3>
+    </div>
+    <div class="right-block">
+      <img class="image"  src="{% static 'img/istockphoto-1341759749-612x612.webp' %}" alt="Image">
+    </div>
+  </div>
+
+</body>  <script src="{% static 'js/index.js' %}"></script>
+
+</html>
